@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+
+<meta charset="utf-8">
+
+<script src="lib/angular.js"></script>
+<script src="lib/angular-ui-router.js"></script>
+
+<script src="layout/layout.js"></script>
+<script src="home/home.js"></script>
+<script src="admin/admin.js"></script>
+
+<script>
+	var app = angular.module('app', [ 'layout', 'home', 'admin', 'ui.state' ]);
+</script>
+
+</head>
+<body>
+
+	<div ui-view="layout"></div>
+	
+</body>
+</html>
