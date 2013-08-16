@@ -11,14 +11,27 @@
 <script src="home/home.js"></script>
 <script src="admin/admin.js"></script>
 
-<script>
-	var app = angular.module('app', [ 'layout', 'home', 'admin', 'ui.state' ]);
-</script>
+	<script>
+		var app = angular.module(
+				'app', 
+				[ 'layout', 'home', 'admin', 'ui.state' ]
+		).controller(function ($rootScope){
+			
+			clearMessage = function(){
+				$rootScope.message = null;
+			}
+			
+		});
+	</script>
 
 </head>
 <body>
 
-	<div ui-view="layout"></div>
+	<div ng-if="message != null" ng-click="clearMessage()">{{ message }} <b style="cursor:pointer;"> X </b></div>
+
+	<div ui-view="login" ng-if="user == null"></div>
+	<div ui-view="companies" ng-if="user != null && company == null"></div>
+	<div ui-view="layout" ng-if="user != null && company != null" ng-init="login()"></div>
 	
 </body>
 </html>
