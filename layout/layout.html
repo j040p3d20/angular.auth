@@ -1,12 +1,37 @@
 
-<h1>
-	hello <a href="#" ng-click="logout()">{{user.name}}</a>
-	// 
-	<a href="#" ng-click="selectCompany()">{{company.name}}</a>
-</h1>
-<ul>
-	<li><a href="#">home</a></li>
-	<li><a href="#/admin">admin</a></li>
-</ul>
+<div ng-if="user == null">
+	<button ng-click="login();">login</button>
+</div>
 
-<div ui-view="content"></div>
+<div ng-if="user != null">
+
+	<h1>welcome, {{user}}</h1>
+	
+	<div ng-if="company == null">
+		<ul>
+			<li>
+				<a href="#/iod">iod</a>
+			</li>
+			<li>
+				<a href="#/rbs">rbs</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div ng-if="company != null">
+		<ul>
+			<li>
+				<a href="#/{{company}}">home</a>
+			</li>
+			<li>
+				<a href="#/{{company}}/admin">admin</a>
+			</li>
+			<li>
+				<a href="#/">change company</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div ui-view></div>
+	
+</div>

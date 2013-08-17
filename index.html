@@ -1,37 +1,29 @@
 <!doctype html>
-<html ng-app="app">
-<head>
+<html ng-app="app"><head>
 
-<meta charset="utf-8">
-
-<script src="lib/angular.js"></script>
-<script src="lib/angular-ui-router.js"></script>
-
-<script src="layout/layout.js"></script>
-<script src="home/home.js"></script>
-<script src="admin/admin.js"></script>
-
+	<meta charset="utf-8">
+	
+	<script src="lib/angular.js"></script>
+	<script src="lib/angular-ui-router.js"></script>
+	
+	<script src="layout/layout.js"></script>
+	<script src="home/home.js"></script>
+	<script src="admin/admin.js"></script>
+	
 	<script>
-		var app = angular.module(
-				'app', 
-				[ 'layout', 'home', 'admin', 'ui.state' ]
-		).controller(function ($rootScope){
-			
-			clearMessage = function(){
-				$rootScope.message = null;
-			}
-			
-		});
+		var app = angular.module( 'app', [ 'layout', 'home', 'admin', 'ui.state' ] );
 	</script>
 
-</head>
-<body>
-
-	<div ng-if="message != null" ng-click="clearMessage()">{{ message }} <b style="cursor:pointer;"> X </b></div>
-
-	<div ui-view="login" ng-if="user == null"></div>
-	<div ui-view="companies" ng-if="user != null && company == null"></div>
-	<div ui-view="layout" ng-if="user != null && company != null" ng-init="login()"></div>
+</head><body>
 	
-</body>
-</html>
+	<style>
+		div {
+			margin:10px;
+			padding:10px;
+			background-color:rgba(128,196,256,0.2);
+		}
+	</style>
+	
+	<div ui-view></div>
+
+</body></html>

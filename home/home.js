@@ -1,13 +1,9 @@
 angular.module('home', [ 'layout', 'ui.state' ]).config(
 	function($stateProvider, $routeProvider) {
 		$stateProvider.state('home', {
-			parent: 'layout',
+			parent: 'secure',
 			url : "",
-			views : {
-				"content" : {
-					templateUrl : "home/home.html"
-				}
-			}
+			templateUrl : "home/home.html",
 		});
 	}
 );
