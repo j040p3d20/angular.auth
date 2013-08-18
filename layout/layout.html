@@ -1,13 +1,79 @@
 
+
+<!-- 
+  -- login 
+  -->
 <div ng-if="user == null">
-	<button ng-click="login();">login</button>
+
+	<form>
+	
+		<fieldset>
+			
+			<legend>login</legend>
+			
+			<label for="email">email</label>
+			<input id="email" ng-model="$parent.email" />
+			<br />
+			
+			<label for="password">password</label>
+			<input id="password" ng-model="$parent.password" />
+			<br />
+				
+			<button ng-click="login()">login</button>
+			
+		</fieldset>
+	
+		<fieldset>
+			
+			<legend>register</legend>
+			
+			<label for="name">name</label>
+			<input id="name" ng-model="$parent.name" />
+			<br />
+			
+			<label for="email">email</label>
+			<input id="email" ng-model="$parent.email" />
+			<br />
+			
+			<label for="password">password</label>
+			<input id="password" ng-model="$parent.password" />
+			<br />
+			
+			<label for="company">company</label>
+			<input id="company" ng-model="$parent.company" />
+			<br />
+				
+			<button ng-click="register()">register</button>
+			
+		</fieldset>
+		
+	</form>
+
 </div>
 
+
+<!-- 
+  -- company list 
+  -->
 <div ng-if="user != null">
 
-	<h1>welcome, {{user}}</h1>
+	<h1>welcome, <a href="javascript:void(0);" ng-click="logout()">{{user.name}}</a></h1>
 	
 	<div ng-if="company == null">
+
+		<h1>please select a company</h1>
+		
+		<ul>
+			<li ng-repeat="company in companies">
+				<a href="#/{{company._id.$id}}">{{company._id.$id}} // {{company.name}}</a>
+				<ul>
+					<li ng-repeat="permission in permissions">
+						<a>{{permission.company.$id}} // {{permission.user.$id}} // {{permission.value}}</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<!--  
 		<ul>
 			<li>
 				<a href="#/iod">iod</a>
@@ -16,15 +82,20 @@
 				<a href="#/rbs">rbs</a>
 			</li>
 		</ul>
+		-->
 	</div>
 	
+
+	<!--
+	  -- layout menu
+	  -->
 	<div ng-if="company != null">
 		<ul>
 			<li>
-				<a href="#/{{company}}">home</a>
+				<a href="#/{{company._id.$id}}">home</a>
 			</li>
 			<li>
-				<a href="#/{{company}}/admin">admin</a>
+				<a href="#/{{company._id.$id}}/admin">admin</a>
 			</li>
 			<li>
 				<a href="#/">change company</a>
@@ -32,6 +103,10 @@
 		</ul>
 	</div>
 	
+
+	<!--  
+	  -- layout content
+	  -->
 	<div ui-view></div>
 	
 </div>

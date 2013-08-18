@@ -58,6 +58,7 @@
 		
 		if($login)
 		{
+			session_start();
 			$_SESSION['login'] = $login;
 			$app->response()->header("Content-Type", "application/json");
 			echo json_encode( $login );
@@ -72,6 +73,8 @@
 	 * logout
 	 */
 	$app->post('/logout', function () use ($app) {
+		//session_destroy();
+		setcookie("PHPSESSID", "", 1);
 		setcookie("email", "", 1);
 		setcookie("authorization", "", 1);
 	});
