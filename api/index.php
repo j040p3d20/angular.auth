@@ -1,5 +1,7 @@
 <?php
 
+	session_start();
+
 	$mongo = new MongoClient();
 	$db = $mongo->angularauth;
 
@@ -10,6 +12,7 @@
 	require 'routes/authentication.php';
 	require 'routes/user.php';
 	require 'routes/company.php';
+	require 'routes/permission.php';
 	
 	$app->response()->header('Cache-Control', 'no-cache');
 	$app->config('debug', true);

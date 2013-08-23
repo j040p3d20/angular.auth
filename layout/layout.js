@@ -59,7 +59,7 @@ angular.module('layout', [ 'ui.state' ]).config(
 					};
 					
 					$http.post( 'api/register', request).success(function(response) {
-						console.log(response);
+						//console.log(response);
 					}).error(function(response) {
 						console.log(response);
 						$rootScope.user = null;

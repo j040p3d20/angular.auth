@@ -1,0 +1,16 @@
+
+<ul>
+	<li ng-repeat="user in users">
+		<a href="#/{{company._id.$id}}/admin/users/{{user._id.$id}}">{{user.name}}</a>
+		<span ng-repeat="permission in permissions">
+			<span ng-if="permission.user.$id == user._id.$id">
+				<a href="javascript:void(0)" ng-click="changePermission(permission)">{{permission.value}}</a>
+			</span>
+		</span>
+	</li>
+	
+	<li>
+		<a href="#/{{company._id.$id}}/admin/users/">new user</a>
+	</li>
+
+</ul>

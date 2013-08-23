@@ -1,5 +1,6 @@
 
-	<h1>admin</h1>
-	
-	<p> this is admin for company {{company}}</p>
+<a href="#/{{company._id.$id}}/admin">admin</a>
+<a href="#/{{company._id.$id}}/admin/users">users</a>
+<a href="#/{{company._id.$id}}/admin/other">other</a>
 
+<div ui-view></div>

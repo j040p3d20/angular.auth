@@ -1,0 +1,22 @@
+
+	<fieldset>
+		
+		<legend>user</legend>
+		
+		<label for="name">name</label>
+		<input id="name" ng-model="user.name" />
+		<br />
+		
+		<label for="email">email</label>
+		<input id="email" ng-model="user.email" />
+		<br />
+		
+		<label for="password">password</label>
+		<input id="password" type="password" ng-model="user.password" />
+		<br />
+			
+		<button ng-click="del()">delete</button>
+		<button ng-click="save()">save</button>
+		<button ng-click="cancel()">cancel</button>
+		
+	</fieldset>

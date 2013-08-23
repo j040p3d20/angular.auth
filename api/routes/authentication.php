@@ -23,7 +23,7 @@
 		);
 		
 		$db->permission->insert( $permission );
-		$data-> permission = $permission;
+		$data->permission = $permission;
 
 		$app->response()->header("Content-Type", "application/json");
 		echo json_encode( $data );
@@ -73,8 +73,7 @@
 	 * logout
 	 */
 	$app->post('/logout', function () use ($app) {
-		//session_destroy();
-		setcookie("PHPSESSID", "", 1);
+		//setcookie("PHPSESSID", "", 1);
 		setcookie("email", "", 1);
 		setcookie("authorization", "", 1);
 	});
@@ -102,12 +101,39 @@
 				$company = (object) $company;
 				$companies[] = $company;
 			}
+			
 			return array(
 					'user' => $user,
 					'permissions' => $permissions,
 					'companies' => $companies
 			);
 		}
+	}
+	
+	/**
+	 * authorize
+	 */
+	function authorize($role = "user") {
+		return function () use ( $role ) {
+			
+			return true;
+			
+			$app = \Slim\Slim::getInstance();
+			if(!empty($_SESSION['user'])) {
+				return true;
+				/*
+				if($_SESSION['user']['role'] == $role || $_SESSION['user']['role'] == 'admin') {
+					return true;
+				}
+				else {
+					$app->halt(403);
+				}
+				*/
+			}
+			else {
+				$app->halt(401);
+			}
+		};
 	}
 
 ?>
