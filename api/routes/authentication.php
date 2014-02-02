@@ -37,7 +37,7 @@
 		$cookies = $app->request->cookies;
 		$body = json_decode($app->request->getBody());
 		
-		if( $body->email && $body->password )
+		if( isset($body->email) && isset($body->password) )
 		{
 			$email = $body->email;
 			$password = $body->password;
@@ -58,7 +58,6 @@
 		
 		if($login)
 		{
-			session_start();
 			$_SESSION['login'] = $login;
 			$app->response()->header("Content-Type", "application/json");
 			echo json_encode( $login );
