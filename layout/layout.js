@@ -1,5 +1,5 @@
 angular.module('layout', [ 'ui.state' ]).config(
-	function($stateProvider, $routeProvider) {
+	function($stateProvider) {
 		$stateProvider.state('layout', {
 			url : "",
 			templateUrl : "layout/layout.html",
