@@ -1,4 +1,4 @@
-angular.module('admin', [ 'layout', 'ui.state' ]).config(
+angular.module('admin', [ 'layout' ]).config(
 	function($stateProvider, $routeProvider) {
 		$stateProvider.state('admin', {
 			abstract:true,
@@ -110,38 +110,3 @@ angular.module('admin', [ 'layout', 'ui.state' ]).config(
 		});
 	}
 );
-
-
-/*
-controller: function( $scope, $rootScope, $http ){
-	
-	$scope.edit = function( user ){
-		$scope.user = user || {};
-		console.log( $scope.user );
-	}
-	
-	$scope.load = function(){
-		
-		var url = 'api/user?company=' + $rootScope.company._id.$id;
-
-		$http.get( url ).success(function(response) {
-			$scope.users = response.users;
-			$scope.permissions = response.permissions;
-		}).error(function(response) {
-			$scope.users = null;
-			$scope.permissions = null;
-		});
-	}
-	
-	$scope.save = function(){
-		$scope.user = null;
-	}
-	
-	$scope.cancel = function(){
-		$scope.user = null;
-	}
-	
-	$scope.user = null;
-	$scope.load();
-}
-*/

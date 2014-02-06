@@ -1,4 +1,4 @@
-angular.module('home', [ 'layout', 'ui.state' ]).config(
+angular.module('home', [ 'layout' ]).config(
 	function($stateProvider, $routeProvider) {
 		$stateProvider.state('home', {
 			parent: 'secure',
